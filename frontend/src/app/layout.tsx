@@ -6,7 +6,10 @@ import { ThemeProvider } from "@/components";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Shopiverse Dashboard",
+  title: {
+    template:"%s | Shopiverse Dashboard",
+    default:"Shopiverse Dashboard"
+  },
   description: "Shopiverse Dashboard App",
 };
 
