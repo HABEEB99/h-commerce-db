@@ -1,55 +1,55 @@
 import type { Config } from "tailwindcss";
-import { createThemes } from "tw-colors";
-import colors, { black } from "tailwindcss/colors";
+// import { createThemes } from "tw-colors";
+// import colors, { black } from "tailwindcss/colors";
 
-const baseColors = [
-  "blue",
-  "indigo",
-  "purple",
-  "pink",
-  "green",
-  "yellow",
-  "red",
-  "gray",
-];
+// const baseColors = [
+//   "blue",
+//   "indigo",
+//   "purple",
+//   "pink",
+//   "green",
+//   "yellow",
+//   "red",
+//   "gray",
+// ];
 
-const shadeMapping = {
-  "50": "900",
-  "100": "800",
-  "200": "700",
-  "300": "600",
-  "400": "500",
-  "500": "400",
-  "600": "300",
-  "700": "200",
-  "800": "100",
-  "900": "50",
-};
+// const shadeMapping = {
+//   "50": "900",
+//   "100": "800",
+//   "200": "700",
+//   "300": "600",
+//   "400": "500",
+//   "500": "400",
+//   "600": "300",
+//   "700": "200",
+//   "800": "100",
+//   "900": "50",
+// };
 
-const generateThemeObject = (colors: any, mapping: any, invert = false) => {
-  const theme: any = {};
-  baseColors.forEach((color) => {
-    theme[color] = {};
-    Object.entries(mapping).forEach(([key, value]: any) => {
-      const shadeKey = invert ? value : key;
-      theme[color][key] = colors[color][shadeKey];
-    });
-  });
+// const generateThemeObject = (colors: any, mapping: any, invert = false) => {
+//   const theme: any = {};
+//   baseColors.forEach((color) => {
+//     theme[color] = {};
+//     Object.entries(mapping).forEach(([key, value]: any) => {
+//       const shadeKey = invert ? value : key;
+//       theme[color][key] = colors[color][shadeKey];
+//     });
+//   });
 
-  return theme;
-};
+//   return theme;
+// };
 
-const lightTheme = generateThemeObject(colors, shadeMapping);
-const darkTheme = generateThemeObject(colors, shadeMapping, true);
+// const lightTheme = generateThemeObject(colors, shadeMapping);
+// const darkTheme = generateThemeObject(colors, shadeMapping, true);
 
-const themes = {
-  light: {
-    ...lightTheme,
-    white: "#ffffff",
-  },
+// const themes = {
+//   light: {
+//     ...lightTheme,
+//     white: "#ffffff",
+//   },
 
-  dark: { ...darkTheme, white: colors.gray["950"], black: colors.gray["50"] },
-};
+//   dark: { ...darkTheme, white: colors.gray["950"], black: colors.gray["50"] },
+// };
 
 const config = {
   darkMode: ["class"],
@@ -70,6 +70,11 @@ const config = {
     },
     extend: {
       colors: {
+        light: "#FDFFFC",
+        dark: "#011627",
+        btn: "#60992D",
+        icon: "#DB5461",
+        modal: "#8CAE68",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -125,7 +130,12 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), createThemes(themes)],
+  // plugins: [require("tailwindcss-animate"), createThemes(themes)],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("tailwind-scrollbar"),
+    require("tailwind-scrollbar-hide"),
+  ],
 } satisfies Config;
 
 export default config;

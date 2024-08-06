@@ -81,6 +81,60 @@ body,
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-light dark:bg-dark !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-icon hover:!scrollbar-thumb-btn text-foreground;
+  }
+}
+
+@layer components {
+  .wrapper {
+    @apply mx-auto max-w-[2520px] px-3 md:px-20;
+  }
+
+  .icon {
+    @apply text-icon cursor-pointer text-xl transition-all duration-200 hover:opacity-80;
+  }
+
+  .btn-icon {
+    @apply ml-1 h-3 w-3 tracking-normal text-gray-200 transition-transform duration-150 ease-in-out group-hover:translate-x-0.5;
+  }
+
+  .modal {
+    @apply bg-modal fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center;
+  }
+
+  .section {
+    @apply flex min-h-screen w-full scroll-mt-24 flex-col items-center;
+  }
+
+  .input-wrapper {
+    @apply group-hover:border-btn flex items-center justify-center space-x-1 rounded-md border-2 bg-transparent px-3;
+  }
+
+  .slider-box {
+    position: relative;
+    height: 400px;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .slider {
+    position: absolute;
+    white-space: nowrap;
+    will-change: transform;
+    animation: slider-box 15s linear infinite;
+    width: 180%;
+  }
+
+  .slider:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes slider-box {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
   }
 }
